@@ -61,14 +61,12 @@ const Index: FunctionalComponent<Props> = () => (
       <link rel="shortcut icon" href={favicon} />
       <link rel="apple-touch-icon" href={ogImage} />
       <meta name="theme-color" content="#ff3385" />
-      
       {/* ===== 广告联盟验证 meta 标签 ===== */}
       <meta 
         name="f953c475b3d622cbb6c510991c61a436a9ef029b" 
         content="f953c475b3d622cbb6c510991c61a436a9ef029b" 
       />
       {/* ===== 验证 meta 标签结束 ===== */}
-      
       <link rel="manifest" href="/manifest.json" />
       <link rel="canonical" href={siteOrigin} />
       <style
@@ -112,6 +110,22 @@ const Index: FunctionalComponent<Props> = () => (
           __html: escapeStyleScriptContent(allSrc),
         }}
       />
+      {/* ===== 广告联盟广告代码 ===== */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: escapeStyleScriptContent(`(function(zzqh){
+var d = document,
+    s = d.createElement('script'),
+    l = d.scripts[d.scripts.length - 1];
+s.settings = zzqh || {};
+s.src = "//conventionalresponse.com/bDXcVUs.dsGbl/0/YtWWc_/ue/m/9/uMZNUIlkk/PFTUcazNMLzNA/5kMcDZEettNdzDMLzQM/DUknwtNzQC";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})`),
+        }}
+      />
+      {/* ===== 广告代码结束 ===== */}
     </body>
   </html>
 );
