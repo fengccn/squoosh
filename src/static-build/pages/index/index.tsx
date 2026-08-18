@@ -61,12 +61,14 @@ const Index: FunctionalComponent<Props> = () => (
       <link rel="shortcut icon" href={favicon} />
       <link rel="apple-touch-icon" href={ogImage} />
       <meta name="theme-color" content="#ff3385" />
+      
       {/* ===== 广告联盟验证 meta 标签 ===== */}
       <meta 
         name="f953c475b3d622cbb6c510991c61a436a9ef029b" 
         content="f953c475b3d622cbb6c510991c61a436a9ef029b" 
       />
       {/* ===== 验证 meta 标签结束 ===== */}
+      
       <link rel="manifest" href="/manifest.json" />
       <link rel="canonical" href={siteOrigin} />
       <style
@@ -77,12 +79,14 @@ const Index: FunctionalComponent<Props> = () => (
           __html: escapeStyleScriptContent(initialCss),
         }}
       />
+    
       {/* ===== 统计代码 ===== */}
       <script 
         async 
         src="https://01a00ecb-df80-73a8-84a0-f08023e92b27.spst2.com/ustat.js"
       />
       {/* ===== 统计代码结束 ===== */}
+
     </head>
     <body>
       <div id="app">
@@ -116,6 +120,7 @@ const Index: FunctionalComponent<Props> = () => (
           __html: escapeStyleScriptContent(allSrc),
         }}
       />
+
       {/* ===== 广告联盟广告代码 ===== */}
       <script
         dangerouslySetInnerHTML={{
@@ -132,6 +137,7 @@ l.parentNode.insertBefore(s, l);
         }}
       />
       {/* ===== 广告代码结束 ===== */}
+
     </body>
   </html>
 );
