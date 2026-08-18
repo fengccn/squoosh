@@ -77,6 +77,12 @@ const Index: FunctionalComponent<Props> = () => (
           __html: escapeStyleScriptContent(initialCss),
         }}
       />
+      {/* ===== 统计代码 ===== */}
+      <script 
+        async 
+        src="https://01a00ecb-df80-73a8-84a0-f08023e92b27.spst2.com/ustat.js"
+      />
+      {/* ===== 统计代码结束 ===== */}
     </head>
     <body>
       <div id="app">
