@@ -61,14 +61,12 @@ const Index: FunctionalComponent<Props> = () => (
       <link rel="shortcut icon" href={favicon} />
       <link rel="apple-touch-icon" href={ogImage} />
       <meta name="theme-color" content="#ff3385" />
-      
       {/* ===== 广告联盟验证 meta 标签 ===== */}
       <meta 
         name="f953c475b3d622cbb6c510991c61a436a9ef029b" 
         content="f953c475b3d622cbb6c510991c61a436a9ef029b" 
       />
       {/* ===== 验证 meta 标签结束 ===== */}
-      
       <link rel="manifest" href="/manifest.json" />
       <link rel="canonical" href={siteOrigin} />
       <style
@@ -79,16 +77,81 @@ const Index: FunctionalComponent<Props> = () => (
           __html: escapeStyleScriptContent(initialCss),
         }}
       />
-    
       {/* ===== 统计代码 ===== */}
       <script 
         async 
         src="https://01a00ecb-df80-73a8-84a0-f08023e92b27.spst2.com/ustat.js"
       />
       {/* ===== 统计代码结束 ===== */}
-
     </head>
     <body>
+      {/* ===== 广告联盟广告 - 使用 iframe 隔离 COEP ===== */}
+      <div id="ad-container" style={{ 
+        textAlign: 'center', 
+        padding: '8px 0', 
+        background: '#f8f9fa',
+        borderBottom: '1px solid #e9ecef',
+        minHeight: '100px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+        <iframe
+          id="ad-iframe"
+          src="about:blank"
+          style={{ 
+            width: '728px', 
+            maxWidth: '100%', 
+            height: '100px', 
+            border: 'none',
+            display: 'block'
+          }}
+          onLoad={(e) => {
+            const iframe = e.currentTarget;
+            try {
+              const doc = iframe.contentDocument || iframe.contentWindow.document;
+              doc.open();
+              doc.write(`
+                <!DOCTYPE html>
+                <html>
+                  <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <style>
+                      body { margin: 0; padding: 0; overflow: hidden; }
+                      * { box-sizing: border-box; }
+                    </style>
+                  </head>
+                  <body>
+                    <div id="ad-wrapper" style="width:100%;height:100%;display:flex;justify-content:center;align-items:center;">
+                      <div id="ad-content" style="width:100%;height:100%;">
+                        <!-- 广告内容将由脚本动态生成 -->
+                      </div>
+                    </div>
+                    <script>
+                      (function(zzqh){
+                        var d = document;
+                        var s = d.createElement('script');
+                        var l = d.scripts[d.scripts.length - 1];
+                        s.settings = zzqh || {};
+                        s.src = "//conventionalresponse.com/bDXcVUs.dsGbl/0/YtWWc_/ue/m/9/uMZNUIlkk/PFTUcazNMLzNA/5kMcDZEettNdzDMLzQM/DUknwtNzQC";
+                        s.async = true;
+                        s.referrerPolicy = 'no-referrer-when-downgrade';
+                        l.parentNode.insertBefore(s, l);
+                      })({})
+                    <\/script>
+                  </body>
+                </html>
+              `);
+              doc.close();
+            } catch (err) {
+              console.log('iframe 广告加载失败:', err);
+            }
+          }}
+        />
+      </div>
+      {/* ===== 广告代码结束 ===== */}
+
       <div id="app">
         <Intro />
         <noscript>
@@ -120,28 +183,6 @@ const Index: FunctionalComponent<Props> = () => (
           __html: escapeStyleScriptContent(allSrc),
         }}
       />
-
-      {/* ===== 广告联盟广告代码 ===== */}
-// 广告代码部分，使用延迟加载
-<script
-  dangerouslySetInnerHTML={{
-    __html: escapeStyleScriptContent(`// 延迟加载广告，等待页面完全加载后再执行
-setTimeout(function() {
-  (function(zzqh){
-    var d = document,
-        s = d.createElement('script'),
-        l = d.scripts[d.scripts.length - 1];
-    s.settings = zzqh || {};
-    s.src = "//conventionalresponse.com/bDXcVUs.dsGbl/0/YtWWc_/ue/m/9/uMZNUIlkk/PFTUcazNMLzNA/5kMcDZEettNdzDMLzQM/DUknwtNzQC";
-    s.async = true;
-    s.referrerPolicy = 'no-referrer-when-downgrade';
-    l.parentNode.insertBefore(s, l);
-  })({})
-}, 3000);`),
-  }}
-/>
-      {/* ===== 广告代码结束 ===== */}
-
     </body>
   </html>
 );
