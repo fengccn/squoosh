@@ -122,20 +122,24 @@ const Index: FunctionalComponent<Props> = () => (
       />
 
       {/* ===== 广告联盟广告代码 ===== */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: escapeStyleScriptContent(`(function(zzqh){
-var d = document,
-    s = d.createElement('script'),
-    l = d.scripts[d.scripts.length - 1];
-s.settings = zzqh || {};
-s.src = "//conventionalresponse.com/bDXcVUs.dsGbl/0/YtWWc_/ue/m/9/uMZNUIlkk/PFTUcazNMLzNA/5kMcDZEettNdzDMLzQM/DUknwtNzQC";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})`),
-        }}
-      />
+// 广告代码部分，使用延迟加载
+<script
+  dangerouslySetInnerHTML={{
+    __html: escapeStyleScriptContent(`// 延迟加载广告，等待页面完全加载后再执行
+setTimeout(function() {
+  (function(zzqh){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.scripts[d.scripts.length - 1];
+    s.settings = zzqh || {};
+    s.src = "//conventionalresponse.com/bDXcVUs.dsGbl/0/YtWWc_/ue/m/9/uMZNUIlkk/PFTUcazNMLzNA/5kMcDZEettNdzDMLzQM/DUknwtNzQC";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+  })({})
+}, 3000);`),
+  }}
+/>
       {/* ===== 广告代码结束 ===== */}
 
     </body>
