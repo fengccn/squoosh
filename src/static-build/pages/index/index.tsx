@@ -106,10 +106,19 @@ const Index: FunctionalComponent<Props> = () => (
             border: 'none',
             display: 'block'
           }}
-          onLoad={(e) => {
+          onLoad={(e: any) => {
             const iframe = e.currentTarget;
+            // 类型保护：确保 iframe 存在
+            if (!iframe) {
+              console.log('iframe 元素不存在');
+              return;
+            }
             try {
-              const doc = iframe.contentDocument || iframe.contentWindow.document;
+              const doc = iframe.contentDocument || iframe.contentWindow?.document;
+              if (!doc) {
+                console.log('无法获取 iframe 的 document');
+                return;
+              }
               doc.open();
               doc.write(`
                 <!DOCTYPE html>
