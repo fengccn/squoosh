@@ -105,7 +105,7 @@ const toOutput: Output = {
 
     # COOP+COEP for WebAssembly threads.
     /*
-      Cross-Origin-Embedder-Policy: require-corp
+      Cross-Origin-Embedder-Policy: unsafe-none
       Cross-Origin-Opener-Policy: same-origin
   `,
 };
