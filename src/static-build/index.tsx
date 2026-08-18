@@ -25,12 +25,6 @@ import * as screenshot6 from 'img-url:static-build/assets/screenshot6.jpg';
 import dedent from 'dedent';
 import { lookup as lookupMime } from 'mime-types';
 
-// 在页面渲染前，先在 head 中插入验证 meta 标签
-const verificationMeta = document.createElement('meta');
-verificationMeta.name = 'f953c475b3d622cbb6c510991c61a436a9ef029b';
-verificationMeta.content = 'f953c475b3d622cbb6c510991c61a436a9ef029b';
-document.head.appendChild(verificationMeta);
-// ===== 注入代码结束 =====
 
 interface Dimensions {
   width: number;
