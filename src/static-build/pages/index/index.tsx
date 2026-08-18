@@ -61,12 +61,14 @@ const Index: FunctionalComponent<Props> = () => (
       <link rel="shortcut icon" href={favicon} />
       <link rel="apple-touch-icon" href={ogImage} />
       <meta name="theme-color" content="#ff3385" />
+      
       {/* ===== 广告联盟验证 meta 标签 ===== */}
       <meta 
         name="f953c475b3d622cbb6c510991c61a436a9ef029b" 
         content="f953c475b3d622cbb6c510991c61a436a9ef029b" 
       />
       {/* ===== 验证 meta 标签结束 ===== */}
+      
       <link rel="manifest" href="/manifest.json" />
       <link rel="canonical" href={siteOrigin} />
       <style
