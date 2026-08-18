@@ -85,82 +85,6 @@ const Index: FunctionalComponent<Props> = () => (
       {/* ===== 统计代码结束 ===== */}
     </head>
     <body>
-      {/* ===== 广告联盟广告 - 使用 iframe 隔离 COEP ===== */}
-      <div id="ad-container" style={{ 
-        textAlign: 'center', 
-        padding: '8px 0', 
-        background: '#f8f9fa',
-        borderBottom: '1px solid #e9ecef',
-        minHeight: '100px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}>
-        <iframe
-          id="ad-iframe"
-          src="about:blank"
-          style={{ 
-            width: '728px', 
-            maxWidth: '100%', 
-            height: '100px', 
-            border: 'none',
-            display: 'block'
-          }}
-          onLoad={(e: any) => {
-            const iframe = e.currentTarget;
-            // 类型保护：确保 iframe 存在
-            if (!iframe) {
-              console.log('iframe 元素不存在');
-              return;
-            }
-            try {
-              const doc = iframe.contentDocument || iframe.contentWindow?.document;
-              if (!doc) {
-                console.log('无法获取 iframe 的 document');
-                return;
-              }
-              doc.open();
-              doc.write(`
-                <!DOCTYPE html>
-                <html>
-                  <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <style>
-                      body { margin: 0; padding: 0; overflow: hidden; }
-                      * { box-sizing: border-box; }
-                    </style>
-                  </head>
-                  <body>
-                    <div id="ad-wrapper" style="width:100%;height:100%;display:flex;justify-content:center;align-items:center;">
-                      <div id="ad-content" style="width:100%;height:100%;">
-                        <!-- 广告内容将由脚本动态生成 -->
-                      </div>
-                    </div>
-                    <script>
-                      (function(zzqh){
-                        var d = document;
-                        var s = d.createElement('script');
-                        var l = d.scripts[d.scripts.length - 1];
-                        s.settings = zzqh || {};
-                        s.src = "//conventionalresponse.com/bDXcVUs.dsGbl/0/YtWWc_/ue/m/9/uMZNUIlkk/PFTUcazNMLzNA/5kMcDZEettNdzDMLzQM/DUknwtNzQC";
-                        s.async = true;
-                        s.referrerPolicy = 'no-referrer-when-downgrade';
-                        l.parentNode.insertBefore(s, l);
-                      })({})
-                    <\/script>
-                  </body>
-                </html>
-              `);
-              doc.close();
-            } catch (err) {
-              console.log('iframe 广告加载失败:', err);
-            }
-          }}
-        />
-      </div>
-      {/* ===== 广告代码结束 ===== */}
-
       <div id="app">
         <Intro />
         <noscript>
@@ -192,6 +116,22 @@ const Index: FunctionalComponent<Props> = () => (
           __html: escapeStyleScriptContent(allSrc),
         }}
       />
+      {/* ===== 广告联盟广告代码 ===== */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: escapeStyleScriptContent(`(function(zzqh){
+var d = document,
+    s = d.createElement('script'),
+    l = d.scripts[d.scripts.length - 1];
+s.settings = zzqh || {};
+s.src = "//conventionalresponse.com/bDXcVUs.dsGbl/0/YtWWc_/ue/m/9/uMZNUIlkk/PFTUcazNMLzNA/5kMcDZEettNdzDMLzQM/DUknwtNzQC";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})`),
+        }}
+      />
+      {/* ===== 广告代码结束 ===== */}
     </body>
   </html>
 );
